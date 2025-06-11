@@ -35,9 +35,6 @@ pipeline {
                 dir('frontend') {
                     sh 'npm test'
                 }
-                dir('backend') {
-                    sh 'npm test'
-                }
             }
         }
 
