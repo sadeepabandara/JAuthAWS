@@ -52,15 +52,15 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 // Assuming Dockerfile is at root and can build entire app
-                sh 'docker build -t JAuthAWS .'
+                sh 'docker build -t jauthaws .'
             }
         }
 
         stage('Deploy (Test Env)') {
             steps {
                 sh '''
-                    docker rm -f JAuthAWS-test || true
-                    docker run -d -p 3000:3000 --name JAuthAWS-test JAuthAWS
+                    docker rm -f jauthaws-test || true
+                    docker run -d -p 3000:3000 --name jauthaws-test jauthaws
                 '''
             }
         }
