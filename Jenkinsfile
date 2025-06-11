@@ -60,8 +60,13 @@ pipeline {
         stage('Deploy (Test Env)') {
             steps {
                 sh '''
-                    docker rm -f jauthaws-test || true
-                    docker run -d -p 3000:3000 --name jauthaws-test jauthaws
+                docker rm -f jauthaws-frontend-test || true
+                docker run -d -p 3000:3000 --name jauthaws-frontend-test jauthaws-frontend
+                '''
+
+                sh '''
+                docker rm -f jauthaws-backend-test || true
+                docker run -d -p 4000:4000 --name jauthaws-backend-test jauthaws-backend
                 '''
             }
         }
