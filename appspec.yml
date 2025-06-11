@@ -1,0 +1,16 @@
+version: 0.0
+os: linux
+files:
+    - source: backend
+      destination: /home/ec2-user/JAuthAWS/backend
+    - source: frontend
+      destination: /home/ec2-user/JAuthAWS/frontend
+
+hooks:
+    AfterInstall:
+        - location: backend/start.sh
+          timeout: 300
+          runas: ec2-user
+        - location: frontend/start.sh
+          timeout: 300
+          runas: ec2-user
