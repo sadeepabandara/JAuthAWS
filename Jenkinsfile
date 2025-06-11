@@ -52,7 +52,8 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 // Assuming Dockerfile is at root and can build entire app
-                sh 'docker build -t jauthaws .'
+                sh 'docker build -t jauthaws-frontend ./frontend'
+                sh 'docker build -t jauthaws-backend ./backend'
             }
         }
 
